@@ -1,0 +1,35 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // 1. SERVICES COLLECTION
+    match /services/{serviceId} {
+      allow read, write: if true;
+    }
+
+    // 2. PORTFOLIO Showcase COLLECTION
+    match /portfolio/{portfolioId} {
+      allow read, write: if true;
+    }
+
+    // 3. ORDERS COLLECTION
+    match /orders/{orderId} {
+      allow read, write: if true;
+    }
+
+    // 4. CHAT MESSAGES COLLECTION
+    match /messages/{messageId} {
+      allow read, write: if true;
+    }
+
+    // 5. NOTIFICATIONS COLLECTION
+    match /notifications/{notificationId} {
+      allow read, write: if true;
+    }
+
+    // 6. CMS USERS COLLECTION
+    match /cms_users/{userId} {
+      allow read, write: if true;
+    }
+  }
+}

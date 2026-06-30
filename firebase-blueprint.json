@@ -1,0 +1,108 @@
+{
+  "entities": {
+    "Service": {
+      "title": "Service",
+      "description": "An editing service offered by the studio",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "price": { "type": "number" },
+        "description": { "type": "string" },
+        "icon": { "type": "string" },
+        "features": { "type": "array" }
+      },
+      "required": ["id", "name", "price", "description"]
+    },
+    "PortfolioItem": {
+      "title": "PortfolioItem",
+      "description": "A featured portfolio work showcasing editing mastery",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "type": { "type": "string", "enum": ["photo", "video"] },
+        "beforeUrl": { "type": "string" },
+        "afterUrl": { "type": "string" },
+        "client": { "type": "string" }
+      },
+      "required": ["id", "title", "type", "beforeUrl", "afterUrl"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "An active editing order pipeline",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "invoiceNo": { "type": "string" },
+        "clientName": { "type": "string" },
+        "clientEmail": { "type": "string" },
+        "clientId": { "type": "string" },
+        "serviceId": { "type": "string" },
+        "serviceName": { "type": "string" },
+        "price": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "in_progress", "under_review", "completed", "cancelled"] },
+        "instructions": { "type": "string" },
+        "fileUrl": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "deliveryUrl": { "type": "string" },
+        "deliveryNotes": { "type": "string" },
+        "statusNotes": { "type": "string" }
+      },
+      "required": ["id", "invoiceNo", "clientEmail", "status", "createdAt"]
+    },
+    "Message": {
+      "title": "Message",
+      "description": "A chat message for an active project",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "orderId": { "type": "string" },
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "text": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "fileUrl": { "type": "string" }
+      },
+      "required": ["orderId", "senderId", "text", "timestamp"]
+    },
+    "NotificationItem": {
+      "title": "NotificationItem",
+      "description": "A chime notification of order progress or system alert",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "message": { "type": "string" },
+        "type": { "type": "string", "enum": ["order", "chat", "payment", "general"] },
+        "createdAt": { "type": "string" },
+        "isRead": { "type": "boolean" },
+        "linkTo": { "type": "string" }
+      },
+      "required": ["title", "message", "type", "createdAt", "isRead"]
+    }
+  },
+  "firestore": {
+    "/services/{serviceId}": {
+      "schema": "Service",
+      "description": "Offered production services"
+    },
+    "/portfolio/{portfolioId}": {
+      "schema": "PortfolioItem",
+      "description": "Featured portfolio visual works"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Active design pipeline orders"
+    },
+    "/messages/{messageId}": {
+      "schema": "Message",
+      "description": "Live production chat lines"
+    },
+    "/notifications/{notificationId}": {
+      "schema": "NotificationItem",
+      "description": "Chime feed alerts"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "AK STAR DIGITAL",
+  "description": "Premium photo & video editing marketplace with Before/After visual comparison, real-time feedback chats, automated PDF invoicing, stripe checkout sandbox, and analytics for the editor.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
